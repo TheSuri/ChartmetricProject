@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chartmetricApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artist Followers View</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+
+
+<body ng-controller="SearchController">
+  <div class="bg"></div>
+  <div class="jumbotron">
+    <h1 class = "text-center">Social Media Following Over Time</h1>
+    <h6 class = "text-center">Pick an artist to compare their Social Media Platform's Follower Data</h2>
+    <form >
+      <div class="col-md-6 col-md-offset-3 form-group">
+          	<div class="input-group input-group-lg keyword-wrapper">
+              <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+              <input type="text" ng-model="searchText" class="form-control" placeholder="Search Artist" autofocus/>
+            </div>
+      </div>
+      <div class="col-md-6 col-md-offset-3 form-group">
+      <button type= "Search" type="submit" ng-click= "search()" class="btn btn-default btn btn-primary center-block">Submit</button>
+    </div>
+    </form>
+  </div>
+      <!--<div class = "row">
+        <div class= "col-xs-4">-->
+  <div class="row text-center">
+          <a href="#">
+            <img ng-show="isArtistImageVisible" ng-src="{{artistDetails.image_url}}" class="center-block img-thumbnail" alt="Cinque Terre">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">{{artistDetails.name}}</h5>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          </div>
+  </div>
+      <div id="container" style="height: 400px; min-width: 310px"></div>
+
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+<!--
+  <div ng-view></div>
+
+  <div>Angular seed app: v<span app-version></span></div>
+  <ul class="menu">
+    <li><a href="#!/view1">view1</a></li>
+    <li><a href="#!/view2">view2</a></li>
+  </ul>
+  </div>
+  -->
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers.js"></script>
+  <script src="views/view1/view1.js"></script>
+  <script src="views/view2/view2.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</body>
+</html>
