@@ -9,7 +9,6 @@ angular.module('chartmetricApp').
 controller('SearchController', ['$scope', '$http', function($scope, $http) {
 
   $scope.search = function() {
-    console.log("in search");
     seriesCounter = 0;
     seriesOptions = [];
     var req = {
@@ -32,7 +31,6 @@ controller('SearchController', ['$scope', '$http', function($scope, $http) {
           $http.get('https://api.chartmetric.io/api/token?refreshtoken=RzLoIs1qtruXM0froUglDQsAgYWk4m6Ps6hh9Fn4Y7wiNnDe86fVIhIlEuNr1chG')
             .then(function(response) {
               $scope.token = response.data.obj;
-              //console.log($scope.token);
               $scope.search();
             })
         } else {
@@ -46,22 +44,20 @@ controller('SearchController', ['$scope', '$http', function($scope, $http) {
   $scope.makeGraph = function(artist) {
     var socialMediaReq = {
       method: 'GET',
-      //url: 'https://api.chartmetric.io/api/artist/'+artist.id+'/stat/facebook?since=2017-12-20',
       headers: {
         'Authorization': 'Bearer ' + $scope.token
       }
     };
-    var socialMediaFollowers = [];
+    var arr = [], socialMediaFollowers = [];
     var socialMedia = ['facebook', 'twitter', 'instagram', 'youtube'];
     for (var i = 0; i < socialMedia.length; i++) {
       socialMediaReq.url = 'https://api.chartmetric.io/api/artist/' + artist.id + '/stat/' + socialMedia[i] + '?since=2016-12-20';
-      $http(socialMediaReq).then(function successCallback(response) {
+        $http(socialMediaReq).then(function successCallback(response) {
         socialMediaFollowers[i] = response.data.obj;
         createChart(socialMediaFollowers[i], i);
-        //console.log(socialMediaFollowers[i]);
-      })
+    });
     }
-  }
+}
 
 
   /**
@@ -69,14 +65,6 @@ controller('SearchController', ['$scope', '$http', function($scope, $http) {
    * @returns {undefined}
    */
   function createChart(socialMediaFollowers, i) {
-    console.log(socialMediaFollowers);
-
-
-    console.log(seriesCounter);
-    //  for (var i = 0; i < names.length; i++) {
-    //$.each(names, function (i, name) {
-
-    //$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=' + name.toLowerCase() + '-c.json&callback=?',    function (data) {
     /*THIS CAN BE IMPROVED UPON??????? */
     var data = [];
     for (var j = 0; j < socialMediaFollowers.length; j++) {
@@ -92,11 +80,9 @@ controller('SearchController', ['$scope', '$http', function($scope, $http) {
     // As we're loading the data asynchronously, we don't know what order it will arrive. So
     // we keep a counter and create the chart when all the data is loaded.
     seriesCounter += 1;
-
+    //Once all social media data is loaded:
     if (seriesCounter === names.length) {
-      //console.log("Sereiesoption[0] " + seriesOptions[0] + " Sereiesoption[1] " + seriesOptions[1]+ " seriesOptions[2] "+ seriesOptions[2] );
       Highcharts.stockChart('container', {
-
         rangeSelector: {
           selected: 4
         },
